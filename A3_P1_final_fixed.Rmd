@@ -20,8 +20,7 @@ str_remove_all <- function(string, pattern) {
   str_replace_all(string, pattern, "")
 }
 
-### Jan's solution ###
-
+### Solution one (different one in v1 and v2) ###
 read_pitch <- function(filename) {
     raw <- read.delim(filename)
     name <- as.character(filename)
@@ -337,11 +336,12 @@ anova(st.se, in.se)
 
 ```{r, plots}
 ggplot(df,
-aes(mean,diagnosis,colour=Gender)) +
+aes(mean,diagnosis,colour=gender)) +
 geom_point() +
 theme_classic()
 #Outliers
 
+df$study <- as.factor(df$study)
 df$diagnosis <- as.factor(df$diagnosis)
 
 p_load(effects)
